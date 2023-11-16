@@ -1,9 +1,16 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000; 
+
+const downloadRoute = require('./src/routes/download.route.js')
+const uploadRoute = require('./src/routes/upload.route.js')
+
 
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(downloadRoute)
+app.use(uploadRoute)
 
 app.get('/',(req,res)=>{
     res.send("done")
