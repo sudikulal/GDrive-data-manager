@@ -1,14 +1,16 @@
-const uploadHelper = require('../utils/uploadHelper.util.js')
+const uploadHelper = require("../utils/uploadHelper.util.js");
 
 class Upload {
-  async uploadFile(req,res,next){
+  async uploadFile(req, res, next) {
     try {
-      res.json(await uploadHelper.uploadFileToDrive(req.file_path,req.field_id));
+      res.json(
+        await uploadHelper.uploadFileToDrive(req.file_path, req.field_id)
+      );
     } catch (err) {
-      console.error(`download failed! `, err.message);
+      console.error(`upload failed! `, err.message);
       next(err);
     }
   }
 }
 
-module.exports = new Upload()
+module.exports = new Upload();
